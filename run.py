@@ -40,12 +40,12 @@ if not args.subjects:
 """
 Read the github README for info on environment variables
 """
-USERNAME = os.environ['MINSIDE-USERNAME']
-PASSWORD = os.environ['MINSIDE-PASS']
+USERNAME = os.environ['MINSIDE_USERNAME']
+PASSWORD = os.environ['MINSIDE_PASS']
 
-SAVE_PATH = os.environ['MINSIDE-FOLDER']
+SAVE_PATH = os.environ['MINSIDE_FOLDER']
 
-nma = pynma.PyNMA(os.environ['PYNMA-API'])
+nma = pynma.PyNMA(os.environ['PYNMA_API'])
 
 
 

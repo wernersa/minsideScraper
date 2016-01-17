@@ -4,18 +4,18 @@ Downloads all files from courses joined on the University of Bergen student webs
 Adding environment variables in linux:
 ```bash
 cat << ! >> ~/.bashrc
-export PYNMA-API=api-string-goes-here
-export MINSIDE-USERNAME=usr123
-export MINSIDE-PASS=password
-export MINSIDE-FOLDER=$HOME/Documents/Minside
+export PYNMA_API=api-string-goes-here
+export MINSIDE_USERNAME=usr123
+export MINSIDE_PASS=password
+export MINSIDE_FOLDER=$HOME/Documents/Minside
 !
 source ~/.bashrc
 ```
 
 Adding environment variables in windows:
 ```batch
-putx PYNMA-API api-string-goes-here
-putx MINSIDE-USERNAME usr123
-putx MINSIDE-PASS password
-putx MINSIDE-FOLDER $HOME\\Documents\\Minside
+putx PYNMA_API api-string-goes-here
+putx MINSIDE_USERNAME usr123
+putx MINSIDE_PASS password
+putx MINSIDE_FOLDER $HOME\\Documents\\Minside
 ```
