@@ -48,8 +48,6 @@ SAVE_PATH = os.environ['MINSIDE_FOLDER']
 nma = pynma.PyNMA(os.environ['PYNMA_API'])
 
 
-
-
 # ----------------------
 # --- SECONDARY FUNCTIONS
 # --- Helper functions, not directly associated with main program
@@ -549,7 +547,7 @@ def main(subjects):
     joined = False
 
     # Initialize the browser
-    browser = mechanicalsoup.Browser()
+    browser = mechanicalsoup.Browser(soup_config={"features":"lxml"})
 
     # Log in to MinSide
     login(browser)
@@ -559,7 +557,6 @@ def main(subjects):
     subjects = [{'name':x} for x in subjects]
     
     for subject in subjects:
-        
         #INIT: First run
         if not os.path.exists(os.path.join(SAVE_PATH,subject['name'])):  
             # Sign up for all earlier courses
@@ -579,8 +576,8 @@ def main(subjects):
             # Found enough files, download the zip
             save_course_zip(browser, course_url, subject['name'])
     
-        # Finally, remove self from all courses
-        if joined:
+        # Finally, remove self from all courses       
+	if joined:
             leave_subject(browser, subject['name'])
     
         # Unzip and clean up the files
@@ -592,6 +589,7 @@ def main(subjects):
         clean_zip_from_dl_directory()
     
         subject['runtime'] = (time.time() - start_time)
+	print(subject)
     
     successful_subjects = [subject for subject in subjects if subject['successful'] > 0]
     successful_subjects_names = [subject['name'] for subject in successful_subjects]
@@ -609,6 +607,8 @@ def main(subjects):
             out = "{}: {} . ".format(subject['name'],",".join(subject['unique_filenames']))   
         nma.push("Minside Scraper",",".join(successful_subjects_names),out)
         print(out)
+    else:
+	print("Scraper: Ingen nye filer.")
         
         
 if __name__ == '__main__':
