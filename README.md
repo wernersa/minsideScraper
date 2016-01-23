@@ -24,6 +24,14 @@ putx MINSIDE_PASS password
 putx MINSIDE_FOLDER $HOME\\Documents\\Minside
 ```
 
+### Python packages
+
+The script depends on `mechanicalsoup`, `pathlib` and `pynma`.
+
+```bash
+pip install mechanicalsoup pathlib pynma
+```
+
 ## Usage
 
 If the python executable is in your environment you can run the file through cmd or terminal with the following line:
